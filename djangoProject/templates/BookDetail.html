@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Detalhes do Livro</title>
+</head>
+<body>
+    <h1>{{ livro.title }}</h1>
+    <ul>
+        <li>{{livro.date}}</li>
+        <li>
+            {% for au in livro.authors.all %}
+                {{ au.name }}
+                    {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </li>
+        <li>{{livro.publisher}}</li>
+    </ul>
+</body>
+</html>

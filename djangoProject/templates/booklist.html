@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>Search by: <strong>{{ query }}</strong></p>
+    {% if boks %}
+    <p>Found {{ boks|length }} book {{ boks|pluralize }}.</p>
+    <ul>
+        {% for bok in boks %}
+        <li>{{ bok.title }}</li>
+            <ul>
+                <li>{{ bok.publisher }}</li>
+                <li>{{ bok.date }}</li>
+                <ul>
+                    {% for author in bok.authors.all %}
+                        <li>{{ author.name }}</li>
+                    {% endfor %}
+                </ul>
+            </ul>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No books found.</p>
+    {% endif %}
+
+</body>
+</html>
